@@ -70,7 +70,13 @@ var resetGame = function () {
 // user wins//
 var userWin = function (userGuess) {
     return userGuess === currentLetter
+   
 }
+// if {
+//     winsCount === 10
+//     alert("Close that counsel homeboy/homegirl!")
+// }
+
 // user loses //
 var userLoss = function () {
     return deathsRemainingCount === 0;
@@ -81,7 +87,7 @@ displayStats();
 
 // keyup function from question game //
 document.onkeyup = function (event) {
-var userGuess = event.key;
+var userGuess = event.key.toUpperCase();
 deathsRemainingCount--;
 poolArray.push(userGuess)
 
@@ -99,7 +105,6 @@ displayStats();
 
 
 }
-
 
 
 
