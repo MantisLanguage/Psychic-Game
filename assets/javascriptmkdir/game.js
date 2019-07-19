@@ -38,7 +38,7 @@ if (livesRemaing == 0) {
 
 
 // //
-// Not sure I understand this
+// Not sure I understand what "CharCode" to input
 // function generateAlphabet() {
 // 	var alphabet = [];
 // 	for (var i = 97; i < 123; i++) {
