@@ -1,7 +1,7 @@
-var letters = ["A", "B", "C", "D","E","F","G","H","I","J","K","L","M","N","o","P","Q","R","S","T","U","V","W","X","Y","Z"]
+var letters = ["A", "B", "C", "D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 let wins = 0;
 let losses = 0;
-let livesRemaing = 10;
+let livesRemaing = 9;
 let guesses = [];
 let userGuess = document.onkeyup;
 let compGuess = letters[Math.floor(Math.random()*letters.length)]
@@ -20,7 +20,7 @@ guesses.push(userGuess);
 if (userGuess == compGuess) {
 
     wins++;
-    livesRemaing = 10;
+    livesRemaing = 9;
     guesses = [];
 }
 // live lost//
@@ -28,10 +28,10 @@ if (userGuess != compGuess)
 livesRemaing--;
 
 }
-
+// total loss// 
 if (livesRemaing == 0) {
     losses++;
-    livesRemaing = 10;
+    livesRemaing = 9;
     guesses = [];
 }
 

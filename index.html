@@ -6,34 +6,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Psychic Guessing Game</title>
-  
-    <link type="text/css" rel="stylesheet" href="assets/javascriptmkdir/style.css">
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body background="assets/images/13b6d749792797.58bed7eeaa6af.jpg">
-    <font color="white">
-   <H1>9 Letters Chain</H1>
-   <p>Guess the letter correctly and you may close this browser, if you do not
-       <br>
-       you will be forced to post this on 9 social media accounts. If you do
-       <br>
-       not comply, you will have wet code for the rest of your life. 
-    </p>
-    <div class="game">Wins:</div>
-<div class="stats" id="totalW">0</div>
-
-<div class="game">Losses:</div>
-<div class="stats" id="totalW">0</div>
-
-<div class="game">Lives:</div>
-<div class="stats" id="totalW">10</div>
-
-<div class="game">Your Failures:</div>
-<div class="stats" id="totalW"></div>
-</font>
+    <H1>9 Letters Chain</H1>
+        <p>Guess the letter correctly and you may close this browser, if you do not
+            <br>
+            you will be forced to post this on 9 social media accounts. If you do
+            <br>
+            not comply, you will have wet code for the rest of your life.
+        </p>
 
 
-</body>
 
-</html>
+
+        <div id="wins">Wins:</div>
+
+
+        <div id="losses">Losses:</div>
+
+
+        <div id="deaths">Lives:</div>
+
+        <div id="pool">Your Failures:</div>
+
+<script type="text/javascript">
+var wins = document.getElementById("wins")
+var losses = document.getElementById("losses")
+var deaths = document.getElementById("deaths")
+var pool = document.getElementById("pool")
+
+var allLetters = ["A", "B", "C", "D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+var winsCount = 0;
+var lossesCount = 0;
+var noDeaths = 9;
+var deathsRemainingCount = noDeaths;
+var poolArray = [];
+
+// computer guess//
+var getRandomLetter = function () {
+    randomLetter = allLetters[Math.floor(Math.random()*allLetters.length)]
+    console.log(randomLetter);
+    return randomLetter
+}
+// connecting html to javascript, couldn't figure out syntax for actually using the game.js file, my javascript might just be wrong in there too? //
+var displayStats = function () {
+wins.innerHTML = "Wins:" + winsCount
+losses.innerHTML = "Losses:" + lossesCount
+deaths.innerHTML = "Lives:" + deathsRemainingCount
+pool.innerHTML = "Failures:" + poolArray
+
+
+}
+// hard reset //
+var resetGame = function () {
+    poolArray = [];
+    deathsRemainingCount = noDeaths;
+    currentLetter = getRandomLetter();
+}
+// user wins//
+var userWin = function (userGuess) {
+    return userGuess === currentLetter
+}
+// user loses //
+var userLoss = function () {
+    return deathsRemainingCount === 0;
+}
+
+var currentLetter = getRandomLetter();
+displayStats();
+
+// keyup function from question game //
+document.onkeyup = function (event) {
+var userGuess = event.key;
+deathsRemainingCount--;
+poolArray.push(userGuess)
+
+if (userWin(userGuess)){
+    winsCount++;
+    resetGame();
+}
+
+if (userLoss()) {
+
+    lossesCount++;
+    resetGame()
+}
+displayStats();
+
+
+}
+
+
+
+
+</script>
+
+
+
+
+</body > </html >
