@@ -13,3 +13,7 @@ h1 {
 div {
     margin-top: 10px;
 }
+
+body{
+    background-size: cover;
+}
